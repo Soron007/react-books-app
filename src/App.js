@@ -1,9 +1,10 @@
 import { Route, Routes } from 'react-router-dom';
-import BookList from './components/BookList';
+
 import Favorites from './components/Favorites';
 import BookPage from './components/BookPage';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import BookDisplay from './components/BookDisplay';
 
 
 function App() {
@@ -12,7 +13,7 @@ function App() {
       <Navbar />
       <Routes>
 
-        <Route path="/" element={<BookList />} />;
+        <Route path="/" element={<BookDisplay />} />;
         <Route path='/book/:id' element={<BookPage />} />
         <Route path='/favorites' element={<Favorites />} />
 
