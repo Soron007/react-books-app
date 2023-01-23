@@ -3,9 +3,21 @@ import '../App.css';
 import { API_URL } from '../API';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useAppContext } from '../context/bookContext';
 
 const BookList = () => {
     const [books, setBooks] = useState([]);
+
+    const { favorites, addToFav, removeFromFav } = useAppContext();
+
+    console.log(favorites);
+
+
+    const favChecker = (id) => {
+        const boolean = favorites.some((book) => book.id === id);
+        return boolean;
+    }
+
 
 
     useEffect(() => {
@@ -28,7 +40,11 @@ const BookList = () => {
 
                     <div><img src={book.image_url} alt="#" /></div>
 
-                    <div><button>Add to favorites</button></div>
+                    <div>
+
+                        {favChecker(book.id) ? <button onClick={() => removeFromFav(book.id)}>Remove from favorites</button> :
+                            <button onClick={() => addToFav(book)}>Add to favorites</button>}
+                    </div>
 
                 </div>
             })}
