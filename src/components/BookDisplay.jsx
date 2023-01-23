@@ -3,6 +3,7 @@ import { useAppContext } from '../context/bookContext';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../API';
+import { useNavigate } from 'react-router-dom';
 
 const BookDisplay = () => {
 
@@ -20,7 +21,7 @@ const BookDisplay = () => {
         })
     }, [])
 
-
+    const navigate = useNavigate();
 
     const favChecker = (id) => {
         const boolean = favorites.some((book) => book.id === id);
@@ -43,7 +44,7 @@ const BookDisplay = () => {
 
                         <div><h4>{book.title}</h4></div>
 
-                        <div><img src={book.image_url} alt="#" /></div>
+                        <div><img src={book.image_url} alt="#" onClick={() => navigate(`/book/${book.id}`)} /></div>
 
                         <div>
 
