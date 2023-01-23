@@ -15,7 +15,7 @@ const Favorites = () => {
 
         <div className='favorites'>
 
-            {favorites.filter((fav) => {
+            {favorites.length > 0 ? favorites.filter((fav) => {
 
                 if (search === '') {
                     return fav;
@@ -36,7 +36,7 @@ const Favorites = () => {
                     </div>
 
                 </div>
-            ))}
+            )) : <h1>No Books added to Favorites</h1>}
         </div>
     )
 }
