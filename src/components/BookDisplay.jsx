@@ -27,30 +27,34 @@ const BookDisplay = () => {
         return boolean;
     }
     return (
-        <div className='book-list'>
-            {books.filter((book) => {
 
-                if (search === '') {
-                    return book;
-                } else if (book.title.toLowerCase().includes(search.toLowerCase())) {
-                    return book;
-                }
-            }).map((book) => {
-                return <div key={book.id} className='book'>
+        <>
+            <div className='book-list'>
 
-                    <div><h4>{book.title}</h4></div>
+                {books.filter(book => {
 
-                    <div><img src={book.image_url} alt="#" /></div>
+                    if (search === '') {
+                        return book;
+                    } else if (book.title.toLowerCase().includes(search.toLowerCase())) {
+                        return book;
+                    }
+                }).map((book) => (
+                    <div key={book.id} className='book'>
 
-                    <div>
+                        <div><h4>{book.title}</h4></div>
 
-                        {favChecker(book.id) ? <button onClick={() => removeFromFav(book.id)}>Remove from favorites</button> :
-                            <button onClick={() => addToFav(book)}>Add to favorites</button>}
+                        <div><img src={book.image_url} alt="#" /></div>
+
+                        <div>
+
+                            {favChecker(book.id) ? <button onClick={() => removeFromFav(book.id)}>Remove from favorites</button> :
+                                <button onClick={() => addToFav(book)}>Add to favorites</button>}
+                        </div>
+
                     </div>
-
-                </div>
-            })}
-        </div>
+                ))}
+            </div>
+        </>
     )
 }
 
