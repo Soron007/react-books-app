@@ -1,5 +1,6 @@
 import React from 'react'
-import { useAppContext } from '../context/bookContext'
+import { useAppContext } from '../context/bookContext';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -8,9 +9,9 @@ const Navbar = () => {
     return (
         <div className='navbar'>
             <div>
-                <h1>All Books App</h1>
+                <Link to={'/'}><h1>All Books App</h1></Link>
             </div>
-            <div>Your Favourites</div>
+            <Link to={'/favorites'}> <div>Your Favourites</div></Link>
 
             <div>
                 <form onSubmit={(e) => e.preventDefault()} >
