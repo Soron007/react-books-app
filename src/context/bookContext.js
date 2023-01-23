@@ -17,6 +17,8 @@ const BookContextProvider = ({ children }) => {
 
     const [favorites, setFavorites] = useState([]);
 
+    const [search, setSearch] = useState('');
+
 
     const addToFav = (book) => {
         const oldFav = [...favorites];
@@ -34,6 +36,7 @@ const BookContextProvider = ({ children }) => {
         <bookContext.Provider value={{
 
             favorites, addToFav, removeFromFav
+            , search, setSearch
 
         }}>
             {children}
